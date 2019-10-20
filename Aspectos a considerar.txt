@@ -1,0 +1,10 @@
+- Formato de DatetimePicker
+dateTimePicker1.Format = DateTimePickerFormat.Custom;
+dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+- Orden de los campos
+- Propiedades de la tabla
+dataGridView1.AllowUserToResizeColumns = false;
+dataGridView1.AllowUserToResizeRows = false;
+dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+dataGridView1.ReadOnly = true;
+dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
