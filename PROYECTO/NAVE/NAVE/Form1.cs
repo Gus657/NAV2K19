@@ -14,33 +14,30 @@ namespace NAVE
     public partial class Form1 : Form
     {
         ToolTip ayuda_tp = new ToolTip();
-        public Form1()
-        {
-            InitializeComponent();
-            
-            string[] alias = { "Cod Producto", "Producto", "Proveedor", "Presentación", "Fecha Compra", "Unidades Minimas", "Bodega", "Estado" };
-            navegador1.asignarAlias(alias);
-            navegador1.asignarSalida(this);
-            navegador1.asignarColorFondo(Color.LightBlue);
-            navegador1.asignarColorFuente(Color.BlueViolet);
-            navegador1.asignarComboConTabla("tbl_proveedor", "nombre");
-            navegador1.asignarComboConLista(2, "Pequeña|Mediana|Grande|");
-            navegador1.asignarComboConTabla("tbl_bodega", "nombre");
-            navegador1.asignarAyuda("1");
-            navegador1.asignarTabla("tbl_producto");
-            navegador1.asignarNombreForm("Productos");
-            ayuda_tp.IsBalloon = true;
-            
-            /*
-            string[] alias = { "Cod Asiento", "Cod Funcion", "Estado" };
-            navegador1.asignarAlias(alias);
-            navegador1.asignarSalida(this);
-            navegador1.asignarColorFondo(Color.LightBlue);
-            navegador1.asignarColorFuente(Color.BlueViolet);
-            navegador1.asignarAyuda("1");
-            navegador1.asignarTabla("pruebaai");
-            navegador1.asignarNombreForm("PruebaAI");     
-            */
+		public Form1()
+		{
+			InitializeComponent();
+			dateTimePicker1.Format = DateTimePickerFormat.Custom;
+			dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+			string[] alias = { "Cod Producto", "Producto", "Proveedor", "Presentación", "Fecha Compra", "Unidades Minimas", "Bodega", "Estado" };
+			navegador1.asignarAlias(alias);
+			navegador1.asignarSalida(this);
+			navegador1.asignarAyuda("1");
+			navegador1.asignarTabla("tbl_producto");
+			ayuda_tp.IsBalloon = true;
+			List<Control> campos = new List<Control>();
+			campos.Add(textBox1);
+			campos.Add(textBox2);
+			campos.Add(textBox3);
+			campos.Add(textBox6);
+			campos.Add(dateTimePicker1);
+			campos.Add(textBox4);
+			campos.Add(textBox9);
+			campos.Add(textBox8);
+			navegador1.ObtenerCamposMantenimiento(campos);
+			navegador1.ObtenerDataGidView(dataGridView1);
+
+		
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -66,8 +63,7 @@ namespace NAVE
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(navegador1.obtenerDatoTabla(3));
-            MessageBox.Show(navegador1.obtenerDatoCampos(2));
+		
         }
     }
 }
