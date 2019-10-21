@@ -36,11 +36,37 @@ namespace NAVE
 			campos.Add(textBox8);
 			navegador1.ObtenerCamposMantenimiento(campos);
 			navegador1.ObtenerDataGidView(dataGridView1);
-
+			//////////////////////////////////////////////
+			dateTimePicker2.Format = DateTimePickerFormat.Custom;
+			dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+			string[] alias2 = { "Cod Producto", "Producto", "Proveedor", "Presentación", "Fecha Compra", "Unidades Minimas", "Bodega", "Estado" };
+			navegador1.asignarAlias2(alias2);
+			navegador1.asignarSalida(this);
+			navegador1.asignarAyuda("1");
+			navegador1.asignarTabla2("tbl_producto");
+			ayuda_tp.IsBalloon = true;
+			List<Control> campos2 = new List<Control>();
+			campos2.Add(textBox14);
+			campos2.Add(textBox13);
+			campos2.Add(textBox12);
+			campos2.Add(textBox11);
+			campos2.Add(dateTimePicker2);
+			campos2.Add(textBox10);
+			campos2.Add(textBox7);
+			campos2.Add(textBox5);
+			navegador1.ObtenerCamposMantenimiento2(campos2);
+			navegador1.ObtenerDataGidView2(dataGridView2);
+			navegador1.Btn_Guardar.Click += Btn_Guardar_Click;
 		
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+		private void Btn_Guardar_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Mira mama estoy en la tele");
+			//throw new NotImplementedException();
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
         {
             frm_login login = new frm_login();
             login.ShowDialog();
