@@ -52,11 +52,13 @@
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
 			this.colorDialog2 = new System.Windows.Forms.ColorDialog();
 			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -401,7 +403,7 @@
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 1;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
 			this.tableLayoutPanel4.Size = new System.Drawing.Size(81, 65);
 			this.tableLayoutPanel4.TabIndex = 1;
 			// 
@@ -453,16 +455,25 @@
 			this.dataGridView2.Size = new System.Drawing.Size(240, 150);
 			this.dataGridView2.TabIndex = 9;
 			// 
+			// dataGridView3
+			// 
+			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView3.Location = new System.Drawing.Point(468, 169);
+			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+			this.dataGridView3.TabIndex = 10;
+			// 
 			// Navegador
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.dataGridView3);
 			this.Controls.Add(this.dataGridView2);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "Navegador";
-			this.Size = new System.Drawing.Size(1148, 93);
+			this.Size = new System.Drawing.Size(1148, 92);
 			this.Load += new System.EventHandler(this.Navegador_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tableLayoutPanel2.ResumeLayout(false);
@@ -470,6 +481,7 @@
 			this.tableLayoutPanel3.PerformLayout();
 			this.tableLayoutPanel4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -498,5 +510,6 @@
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_MasAyuda;
 		private System.Windows.Forms.DataGridView dataGridView2;
+		private System.Windows.Forms.DataGridView dataGridView3;
 	}
 }

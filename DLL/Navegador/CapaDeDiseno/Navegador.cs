@@ -189,7 +189,120 @@ namespace CapaDeDiseno
 
 		//-----------------------------------------------Funciones-----------------------------------------------//
 
+		public void siguiente()
+		{
+			int i = 0;
+			string[] Campos = logic.campos(deta);
 
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[fila + 1].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[fila + 1].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+
+
+				}
+
+			}
+		}
+
+		public void anterior()
+		{
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila > 0)
+			{
+				dataGridView2.Rows[fila - 1].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[fila - 1].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+
+
+				}
+			}
+		}
+
+		public void fin()
+		{
+			dataGridView2.Rows[dataGridView2.Rows.Count - 2].Selected = true;
+			dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView1.Rows.Count - 2].Cells[0];
+
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[dataGridView1.Rows.Count - 2].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+				}
+
+
+
+			}
+		}
+
+		public void inicio()
+		{
+			dataGridView2.Rows[0].Selected = true;
+			dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[0].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+
+
+				foreach (Control componente in camposNav2)
+				{
+					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+					{
+						componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+						i++;
+					}
+					if (componente is Button)
+					{
+						string var1 = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+						if (var1 == "0")
+						{
+							componente.Text = "Desactivado";
+							componente.BackColor = Color.Red;
+						}
+						if (var1 == "1")
+						{
+							componente.Text = "Activado";
+							componente.BackColor = Color.Green;
+						}
+					}
+
+				}
+
+
+			}
+		}
 		public void ObtenerIdUsuario(string idUsuario)
 		{
 			this.idUsuario = idUsuario;
