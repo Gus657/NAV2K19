@@ -36,7 +36,7 @@ namespace NAVE
 			campos.Add(textBox8);
 			navegador1.ObtenerCamposMantenimiento(campos);
 			navegador1.ObtenerDataGidView(dataGridView1);
-			//////////////////////////////////////////////
+			/////////////////////DETALLE/////////////////////////
 			string[] alias2 = { "Linea", "Encabezado", "Producto", "Precio", "Cantidad", "Estado" };
 			navegador1.asignarAlias2(alias2);
 			navegador1.asignarSalida(this);
@@ -52,6 +52,12 @@ namespace NAVE
 			campos2.Add(textBox5);
 			navegador1.ObtenerCamposMantenimiento2(campos2);
 			navegador1.ObtenerDataGidView2(dataGridView2);
+			foreach (string  item in alias2)
+			{
+				dataGridView3.Columns.Add(item,item);
+			}
+		
+			
 		
         }
 
@@ -66,11 +72,22 @@ namespace NAVE
             string aplicacionActiva = "1";
             navegador1.ObtenerIdUsuario(login.obtenerNombreUsuario());
             navegador1.botonesYPermisosInicial(login.obtenerNombreUsuario(), aplicacionActiva);
-            //navegador1.registros();
-            navegador1.ObtenerIdAplicacion(aplicacionActiva);             
-        }
+            navegador1.ObtenerIdAplicacion(aplicacionActiva);
+			
+			
+			
 
-        private void Navegador1_Load(object sender, EventArgs e)
+		
+			
+				
+			
+
+
+		}
+
+
+
+		private void Navegador1_Load(object sender, EventArgs e)
         {
 
         }
@@ -107,12 +124,16 @@ namespace NAVE
 
 		private void Button6_Click(object sender, EventArgs e)
 		{
-			dataGridView1.Rows.Add("five", "six", "seven", "eight");
+			dataGridView3.Rows.Add(textBox14.Text, textBox13.Text, textBox12.Text, textBox11.Text, textBox10.Text, textBox5.Text);
 		}
 
 		private void Button5_Click(object sender, EventArgs e)
 		{
-			dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+			if (dataGridView3.Rows.Count > 1 && dataGridView3.CurrentCell.RowIndex!= dataGridView3.Rows.Count-1)
+			{
+				dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+			}
+			
 		}
 
 		private void Timer1_Tick(object sender, EventArgs e)
