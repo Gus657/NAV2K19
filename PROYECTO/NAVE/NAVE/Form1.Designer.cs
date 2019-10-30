@@ -58,7 +58,7 @@
 			this.textBox1.Location = new System.Drawing.Point(12, 134);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(249, 20);
-			this.textBox1.TabIndex = 2;
+			this.textBox1.TabIndex = 0;
 			// 
 			// textBox2
 			// 
@@ -81,7 +81,7 @@
 			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(340, 117);
+			this.dataGridView1.Location = new System.Drawing.Point(340, 131);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -93,35 +93,35 @@
 			this.textBox4.Location = new System.Drawing.Point(12, 316);
 			this.textBox4.Name = "textBox4";
 			this.textBox4.Size = new System.Drawing.Size(249, 20);
-			this.textBox4.TabIndex = 8;
+			this.textBox4.TabIndex = 7;
 			// 
 			// textBox6
 			// 
 			this.textBox6.Location = new System.Drawing.Point(12, 243);
 			this.textBox6.Name = "textBox6";
 			this.textBox6.Size = new System.Drawing.Size(249, 20);
-			this.textBox6.TabIndex = 6;
+			this.textBox6.TabIndex = 5;
 			// 
 			// textBox8
 			// 
 			this.textBox8.Location = new System.Drawing.Point(12, 389);
 			this.textBox8.Name = "textBox8";
 			this.textBox8.Size = new System.Drawing.Size(249, 20);
-			this.textBox8.TabIndex = 10;
+			this.textBox8.TabIndex = 9;
 			// 
 			// textBox9
 			// 
 			this.textBox9.Location = new System.Drawing.Point(12, 351);
 			this.textBox9.Name = "textBox9";
 			this.textBox9.Size = new System.Drawing.Size(249, 20);
-			this.textBox9.TabIndex = 9;
+			this.textBox9.TabIndex = 8;
 			// 
 			// dateTimePicker1
 			// 
 			this.dateTimePicker1.Location = new System.Drawing.Point(13, 282);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(248, 20);
-			this.dateTimePicker1.TabIndex = 11;
+			this.dateTimePicker1.TabIndex = 6;
 			// 
 			// navegador1
 			// 
@@ -129,7 +129,7 @@
 			this.navegador1.Location = new System.Drawing.Point(12, 12);
 			this.navegador1.Name = "navegador1";
 			this.navegador1.Size = new System.Drawing.Size(1148, 99);
-			this.navegador1.TabIndex = 0;
+			this.navegador1.TabIndex = 10;
 			this.navegador1.Load += new System.EventHandler(this.Navegador1_Load_1);
 			// 
 			// Form1
