@@ -17,13 +17,18 @@ namespace CapaDeDiseno
 
 		logicaNav logic = new logicaNav();
 		List<Control> camposNav = new List<Control>();
+		List<Control> camposNav2 = new List<Control>();
 		Form cerrar;
 		int correcto = 0;
-		string tabla = "def";
+		string enca = "def";
+		string deta = "def";
 		int activar = 0;    //Variable para reconocer que funcion realizara el boton de guardar (1. Ingresar, 2. Modificar, 3. Eliminar)
 		string[] aliasC = new string[40];
+		string[] aliasC2 = new string[40];
 		string[] tipoCampo = new string[30];//
+		string[] tipoCampo2 = new string[30];//
 		string[] NomCampo = new string[40];
+		string[] NomCampo2 = new string[40];
 		int estado = 1;
 		bool presionado = false;
 		sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
@@ -62,33 +67,45 @@ namespace CapaDeDiseno
 
 
 
-			if (tabla != "def")
+			if (enca != "def" && deta != "def")
 			{
-				string TablaOK = logic.TestTabla(tabla);
-				if (TablaOK == "" && correcto == 0)
+				string TablaOK = logic.TestTabla(enca);
+				string TablaOK2 = logic.TestTabla(deta);
+				if (TablaOK == "" && correcto == 0 && TablaOK2 == "")
 				{
-					string EstadoOK = logic.TestEstado(tabla);
-					if (EstadoOK == "" && correcto == 0)
+					string EstadoOK = logic.TestEstado(enca);
+					string EstadoOK2 = logic.TestEstado(deta);
+
+					if (EstadoOK == "" && correcto == 0 && EstadoOK2 == "")
 					{
-						DataTable dt = logic.consultaLogica(tabla);
+						DataTable dt = logic.consultaLogica(enca);
 						dataGridView1.DataSource = dt;
+						DataTable dt2 = logic.consultaLogica(deta);
+						dataGridView2.DataSource = dt2;
 						Asayuda = logic.verificacion("");
 						if (Asayuda == "0")
 						{
-							MessageBox.Show("No se encontró ningún registro en la tabla Ayuda");
+							MessageBox.Show("No se encontró ningún registro en la enca Ayuda");
 							Application.Exit();
 						}
 						else
 						{
 
-							if (numeroAlias() == logic.contarCampos(tabla))
+							if (numeroAlias() == logic.contarCampos(enca) && numeroAlias2() == logic.contarCampos(deta))
 							{
 								llenarCampos();
+								llenarCampos2();
 								int i = 0;
 								int head = 0;
-								while (head < logic.contarCampos(tabla))
+								while (head < logic.contarCampos(enca))
 								{
 									dataGridView1.Columns[head].HeaderText = aliasC[head];
+									head++;
+								}
+								head = 0;
+								while (head < logic.contarCampos(deta))
+								{
+									dataGridView2.Columns[head].HeaderText = aliasC2[head];
 									head++;
 								}
 								deshabilitarcampos_y_botones();
@@ -96,14 +113,22 @@ namespace CapaDeDiseno
 								Btn_Modificar.Enabled = true;
 								Btn_Eliminar.Enabled = true;
 
-								if (logic.TestRegistros(tabla) > 0)
+								if (logic.TestRegistros(enca) > 0 && logic.TestRegistros(deta) > 0)
 								{
-									foreach (Control componente in Controls)
+									foreach (Control componente in camposNav)
 									{
 										
 											componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
 											i++;
 										
+									}
+									i = 0;
+									foreach (Control componente in camposNav2)
+									{
+
+										componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+										i++;
+
 									}
 								}
 								else
@@ -118,7 +143,7 @@ namespace CapaDeDiseno
 							}
 							else
 							{
-								if (numeroAlias() < logic.contarCampos(tabla))
+								if (numeroAlias() < logic.contarCampos(enca) || numeroAlias2() < logic.contarCampos(deta))
 								{
 									DialogResult validacion = MessageBox.Show(EstadoOK + "El numero de Alias asignados es menor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
 									if (validacion == DialogResult.OK)
@@ -128,7 +153,7 @@ namespace CapaDeDiseno
 								}
 								else
 								{
-									if (numeroAlias() > logic.contarCampos(tabla))
+									if (numeroAlias() > logic.contarCampos(enca) || numeroAlias2() < logic.contarCampos(deta))
 									{
 										DialogResult validacion = MessageBox.Show(EstadoOK + "El numero de Alias asignados es mayor que el requerido \n Solucione este error para continuar...", "Verificación de requisitos", MessageBoxButtons.OK);
 										if (validacion == DialogResult.OK)
@@ -164,7 +189,120 @@ namespace CapaDeDiseno
 
 		//-----------------------------------------------Funciones-----------------------------------------------//
 
+		public void siguiente()
+		{
+			int i = 0;
+			string[] Campos = logic.campos(deta);
 
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[fila + 1].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[fila + 1].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+
+
+				}
+
+			}
+		}
+
+		public void anterior()
+		{
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila > 0)
+			{
+				dataGridView2.Rows[fila - 1].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[fila - 1].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+
+
+				}
+			}
+		}
+
+		public void fin()
+		{
+			dataGridView2.Rows[dataGridView2.Rows.Count - 2].Selected = true;
+			dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView1.Rows.Count - 2].Cells[0];
+
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[dataGridView1.Rows.Count - 2].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[0];
+
+				foreach (Control componente in camposNav2)
+				{
+
+					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+					i++;
+				}
+
+
+
+			}
+		}
+
+		public void inicio()
+		{
+			dataGridView2.Rows[0].Selected = true;
+			dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+
+			int i = 0;
+			string[] Campos = logic.campos(deta);
+
+			int fila = dataGridView2.SelectedRows[0].Index;
+			if (fila < dataGridView2.Rows.Count - 1)
+			{
+				dataGridView2.Rows[0].Selected = true;
+				dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+
+
+				foreach (Control componente in camposNav2)
+				{
+					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
+					{
+						componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+						i++;
+					}
+					if (componente is Button)
+					{
+						string var1 = dataGridView2.CurrentRow.Cells[i].Value.ToString();
+						if (var1 == "0")
+						{
+							componente.Text = "Desactivado";
+							componente.BackColor = Color.Red;
+						}
+						if (var1 == "1")
+						{
+							componente.Text = "Activado";
+							componente.BackColor = Color.Green;
+						}
+					}
+
+				}
+
+
+			}
+		}
 		public void ObtenerIdUsuario(string idUsuario)
 		{
 			this.idUsuario = idUsuario;
@@ -174,10 +312,19 @@ namespace CapaDeDiseno
 		{
 			dataGridView1 = dtb;
 		}
+		public void ObtenerDataGidView2(DataGridView dtb)
+		{
+			dataGridView2 = dtb;
+		}
 
 		public void ObtenerCamposMantenimiento(List<Control> controles)
 		{
 			camposNav = controles;
+
+		}
+		public void ObtenerCamposMantenimiento2(List<Control> controles)
+		{
+			camposNav2 = controles;
 
 		}
 
@@ -190,6 +337,18 @@ namespace CapaDeDiseno
 		{
 			int i = 0;
 			foreach (string cad in aliasC)
+			{
+				if (cad != null && cad != "")
+				{
+					i++;
+				}
+			}
+			return i;
+		}
+		private int numeroAlias2()
+		{
+			int i = 0;
+			foreach (string cad in aliasC2)
 			{
 				if (cad != null && cad != "")
 				{
@@ -245,13 +404,20 @@ namespace CapaDeDiseno
 
 		public void asignarTabla(string table)
 		{
-			tabla = table;
+			enca = table;
 		}
-
+		public void asignarTabla2(string table)
+		{
+			deta = table;
+		}
 
 		public void asignarAlias(string[] alias)
 		{
 			alias.CopyTo(aliasC, 0);
+		}
+		public void asignarAlias2(string[] alias)
+		{
+			alias.CopyTo(aliasC2, 0);
 		}
 
 
@@ -291,12 +457,21 @@ namespace CapaDeDiseno
 
 		public void actualizardatagriew()
 		{
-			DataTable dt = logic.consultaLogica(tabla);
+			DataTable dt = logic.consultaLogica(enca);
 			dataGridView1.DataSource = dt;
 			int head = 0;
-			while (head < logic.contarCampos(tabla))
+			while (head < logic.contarCampos(enca))
 			{
 				dataGridView1.Columns[head].HeaderText = aliasC[head];
+				head++;
+			}
+
+			DataTable dt2 = logic.consultaLogica(deta);
+			dataGridView2.DataSource = dt2;
+			 head = 0;
+			while (head < logic.contarCampos(deta))
+			{
+				dataGridView2.Columns[head].HeaderText = aliasC2[head];
 				head++;
 			}
 		}
@@ -304,7 +479,7 @@ namespace CapaDeDiseno
 		string crearDelete()// crea el query de delete
 		{
 			//Cambiar el estadoPelicula por estado
-			string query = "UPDATE " + tabla + " SET estado=0";
+			string query = "UPDATE " + enca + " SET estado=0";
 			string whereQuery = " WHERE  ";
 			int posCampo = 0;
 			string campos = "";
@@ -335,14 +510,16 @@ namespace CapaDeDiseno
 			//query += campos + whereQuery + ";";
 			query += whereQuery + ";";
 			Console.Write(query);
-			sn.insertarBitacora(idUsuario, "Se eliminó un registro", tabla);
+			sn.insertarBitacora(idUsuario, "Se eliminó un registro", enca);
 			return query;
 		}
 
-		void llenarCampos()
+	
+
+		public void llenarCampos()
 		{
-			string[] Campos = logic.campos(tabla);
-			string[] Tipos = logic.tipos(tabla);
+			string[] Campos = logic.campos(enca);
+			string[] Tipos = logic.tipos(enca);
 			int i = 0;
 			NomCampo = Campos;
 			int fin = Campos.Length;
@@ -392,7 +569,7 @@ namespace CapaDeDiseno
 
 						if (Tipos[i] != null && Tipos[i] != "")
 						{
-							DialogResult validacion = MessageBox.Show("La tabla " + tabla + " posee un campo " + Tipos[i] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
+							DialogResult validacion = MessageBox.Show("La enca " + enca + " posee un campo " + Tipos[i] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
 							if (validacion == DialogResult.OK)
 							{
 								Application.Exit();
@@ -406,9 +583,75 @@ namespace CapaDeDiseno
 			}
 			}
 
-			string crearInsert()// crea el query de insert
+		public void llenarCampos2()
+		{
+			string[] Campos = logic.campos(deta);
+			string[] Tipos = logic.tipos(deta);
+			int i = 0;
+			NomCampo2 = Campos;
+			int fin = Campos.Length;
+			while (i < fin)
+			{
+
+
+
+				switch (Tipos[i])
+				{
+					case "int":
+						tipoCampo2[i] = "Num";
+						break;
+					case "varchar":
+						tipoCampo2[i] = "Text";
+						break;
+					case "date":
+						tipoCampo2[i] = "Text";
+						break;
+					case "datetime":
+						tipoCampo2[i] = "Text";
+						break;
+					case "text":
+						tipoCampo2[i] = "Text";
+						break;
+					case "time":
+						tipoCampo2[i] = "Text";
+						break;
+
+					case "float":
+						tipoCampo2[i] = "Text";
+						break;
+
+					case "decimal":
+						tipoCampo2[i] = "Text";
+						break;
+
+					case "double":
+						tipoCampo2[i] = "Text";
+						break;
+
+					case "tinyint":
+						tipoCampo2[i] = "Num";
+						break;
+
+					default:
+
+						if (Tipos[i] != null && Tipos[i] != "")
+						{
+							DialogResult validacion = MessageBox.Show("La enca " + enca + " posee un campo " + Tipos[i] + ", este tipo de dato no es reconocido por el navegador\n Solucione este problema...", "Verificación de requisitos", MessageBoxButtons.OK);
+							if (validacion == DialogResult.OK)
+							{
+								Application.Exit();
+							}
+						}
+
+						break;
+				}
+
+				i++;
+			}
+		}
+		string crearInsert()// crea el query de insert
         {
-            string query = "INSERT INTO " + tabla + " VALUES (";
+            string query = "INSERT INTO " + enca + " VALUES (";
 
             int posCampo = 0;
             string campos = "";
@@ -445,14 +688,43 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(' ');
             campos = campos.TrimEnd(',');
             query += campos + ");";
-            sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", tabla);
+            sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", enca);
             return query;
         }
 
+		string crearInsert2()// crea el query de insert
+		{
+			string query = "INSERT INTO " + deta + " VALUES (";
 
-        string crearUpdate()// crea el query de update
+			int posCampo = 0;
+			string campos = "";
+			foreach (Control componente in camposNav2)
+			{
+
+
+				switch (tipoCampo2[posCampo])
+				{
+					case "Text":
+						campos += "'" + componente.Text + "' , ";
+						break;
+					case "Num":
+						campos += componente.Text + " , ";
+						break;
+				}
+				posCampo++;
+
+			}
+			campos = campos.TrimEnd(' ');
+			campos = campos.TrimEnd(',');
+			query += campos + ");";
+			sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", deta);
+			return query;
+		}
+
+
+		string crearUpdate()// crea el query de update
         {
-            string query = "UPDATE " + tabla + " SET ";
+            string query = "UPDATE " + enca + " SET ";
             string whereQuery = " WHERE  ";
             int posCampo = 0;
             string campos = "";
@@ -497,7 +769,7 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(',');
             query += campos + whereQuery + ";";
             //contenido.Text = query;
-            sn.insertarBitacora(idUsuario, "Se actualizó un registro", tabla);
+            sn.insertarBitacora(idUsuario, "Se actualizó un registro", enca);
             return query;
         }
 
@@ -534,10 +806,10 @@ namespace CapaDeDiseno
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            string[] Tipos = logic.tipos(tabla);
+            string[] Tipos = logic.tipos(enca);
 
             //codigo para aplicar el autoincrementable             
-            string[] Extras = logic.extras(tabla);
+            string[] Extras = logic.extras(enca);
             bool tipoInt = false;
             bool ExtraAI = false;
             if (Tipos[0] == "int")
@@ -548,7 +820,7 @@ namespace CapaDeDiseno
             {
                 ExtraAI = true;
             }
-            string auxId = (logic.lastID(tabla));
+            string auxId = (logic.lastID(enca));
             int auxLastId = Int32.Parse(auxId);
 
             activar = 2;
@@ -627,7 +899,7 @@ namespace CapaDeDiseno
             Btn_Refrescar.Enabled = true;
 
             actualizardatagriew();            
-            if (logic.TestRegistros(tabla)>0)
+            if (logic.TestRegistros(enca)>0)
             {
                 int i = 0;
                 foreach (Control componente in camposNav)
@@ -717,7 +989,7 @@ namespace CapaDeDiseno
         private void Btn_Anterior_Click(object sender, EventArgs e)
         {
             int i = 0;
-            string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.campos(enca);
 
             int fila = dataGridView1.SelectedRows[0].Index;
             if (fila > 0)
@@ -740,7 +1012,7 @@ namespace CapaDeDiseno
         private void Btn_Siguiente_Click(object sender, EventArgs e)
         {
             int i = 0;
-                string[] Campos = logic.campos(tabla);
+                string[] Campos = logic.campos(enca);
 
                 int fila = dataGridView1.SelectedRows[0].Index;
                 if (fila < dataGridView1.Rows.Count - 1)
@@ -766,7 +1038,7 @@ namespace CapaDeDiseno
             dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 2].Cells[0];
 
             int i = 0;
-            string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.campos(enca);
 
             int fila = dataGridView1.SelectedRows[0].Index;
             if (fila < dataGridView1.Rows.Count - 1)
@@ -792,7 +1064,7 @@ namespace CapaDeDiseno
             dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
 
             int i = 0;
-            string[] Campos = logic.campos(tabla);
+            string[] Campos = logic.campos(enca);
 
             int fila = dataGridView1.SelectedRows[0].Index;
             if (fila < dataGridView1.Rows.Count - 1)
@@ -930,7 +1202,7 @@ namespace CapaDeDiseno
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
             bool lleno =true;
-            foreach (Control componente in Controls)
+            foreach (Control componente in camposNav)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
@@ -949,7 +1221,8 @@ namespace CapaDeDiseno
                         break;
                     case 2:
                         logic.nuevoQuery(crearInsert());
-                        Btn_Anterior.Enabled = true;
+						logic.nuevoQuery(crearInsert2());
+						Btn_Anterior.Enabled = true;
                         Btn_Siguiente.Enabled = true;
                         Btn_FlechaInicio.Enabled = true;
                         Btn_FlechaFin.Enabled = true;
@@ -965,16 +1238,15 @@ namespace CapaDeDiseno
             }
            
             actualizardatagriew();            
-            if (logic.TestRegistros(tabla)>0)
+            if (logic.TestRegistros(enca)>0)
             {
                 int i = 0;
-                foreach (Control componente in Controls)
+                foreach (Control componente in camposNav)
                 {
-                    if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-                    {
+                   
                         componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
                         i++;
-                    }
+                    
                 }
             }
            
@@ -994,7 +1266,7 @@ namespace CapaDeDiseno
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = 0;
-            foreach (Control componente in Controls)
+            foreach (Control componente in camposNav)
             {
                 
                     componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
@@ -1009,7 +1281,7 @@ namespace CapaDeDiseno
         {
             try
             {
-                if (logic.TestRegistros(tabla) <= 0)
+                if (logic.TestRegistros(enca) <= 0)
                 {                    
                     Btn_Ingresar.Enabled = false;
                     Btn_Modificar.Enabled = false;
@@ -1110,7 +1382,7 @@ namespace CapaDeDiseno
         {
             try
             {
-                if (logic.TestRegistros(tabla) <= 0)
+                if (logic.TestRegistros(enca) <= 0)
                 {
                     Btn_Ingresar.Enabled = false;
                     Btn_Modificar.Enabled = false;

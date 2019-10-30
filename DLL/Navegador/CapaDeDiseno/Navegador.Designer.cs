@@ -51,10 +51,14 @@
 			this.Btn_MasAyuda = new System.Windows.Forms.Button();
 			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
 			this.colorDialog2 = new System.Windows.Forms.ColorDialog();
+			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView1
@@ -107,7 +111,7 @@
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
 			this.tableLayoutPanel2.RowCount = 1;
 			this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel2.Size = new System.Drawing.Size(1142, 92);
+			this.tableLayoutPanel2.Size = new System.Drawing.Size(1142, 87);
 			this.tableLayoutPanel2.TabIndex = 8;
 			// 
 			// Btn_Salir
@@ -122,7 +126,7 @@
 			this.Btn_Salir.Location = new System.Drawing.Point(1053, 0);
 			this.Btn_Salir.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Salir.Name = "Btn_Salir";
-			this.Btn_Salir.Size = new System.Drawing.Size(89, 92);
+			this.Btn_Salir.Size = new System.Drawing.Size(89, 87);
 			this.Btn_Salir.TabIndex = 13;
 			this.Btn_Salir.Text = "Salir";
 			this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -141,7 +145,7 @@
 			this.Btn_FlechaFin.Location = new System.Drawing.Point(891, 0);
 			this.Btn_FlechaFin.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_FlechaFin.Name = "Btn_FlechaFin";
-			this.Btn_FlechaFin.Size = new System.Drawing.Size(81, 92);
+			this.Btn_FlechaFin.Size = new System.Drawing.Size(81, 87);
 			this.Btn_FlechaFin.TabIndex = 11;
 			this.Btn_FlechaFin.Text = "Fin";
 			this.Btn_FlechaFin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -160,7 +164,7 @@
 			this.Btn_Siguiente.Location = new System.Drawing.Point(810, 0);
 			this.Btn_Siguiente.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Siguiente.Name = "Btn_Siguiente";
-			this.Btn_Siguiente.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Siguiente.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Siguiente.TabIndex = 10;
 			this.Btn_Siguiente.Text = "Siguiente";
 			this.Btn_Siguiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -179,7 +183,7 @@
 			this.Btn_Anterior.Location = new System.Drawing.Point(729, 0);
 			this.Btn_Anterior.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Anterior.Name = "Btn_Anterior";
-			this.Btn_Anterior.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Anterior.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Anterior.TabIndex = 9;
 			this.Btn_Anterior.Text = "Anterior";
 			this.Btn_Anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -198,7 +202,7 @@
 			this.Btn_FlechaInicio.Location = new System.Drawing.Point(648, 0);
 			this.Btn_FlechaInicio.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_FlechaInicio.Name = "Btn_FlechaInicio";
-			this.Btn_FlechaInicio.Size = new System.Drawing.Size(81, 92);
+			this.Btn_FlechaInicio.Size = new System.Drawing.Size(81, 87);
 			this.Btn_FlechaInicio.TabIndex = 8;
 			this.Btn_FlechaInicio.Text = "Inicio";
 			this.Btn_FlechaInicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -217,7 +221,7 @@
 			this.Btn_Refrescar.Location = new System.Drawing.Point(567, 0);
 			this.Btn_Refrescar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Refrescar.Name = "Btn_Refrescar";
-			this.Btn_Refrescar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Refrescar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Refrescar.TabIndex = 7;
 			this.Btn_Refrescar.Text = "Refrescar";
 			this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -236,7 +240,7 @@
 			this.Btn_Imprimir.Location = new System.Drawing.Point(486, 0);
 			this.Btn_Imprimir.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Imprimir.Name = "Btn_Imprimir";
-			this.Btn_Imprimir.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Imprimir.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Imprimir.TabIndex = 6;
 			this.Btn_Imprimir.Text = "Imprimir";
 			this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -255,7 +259,7 @@
 			this.Btn_Consultar.Location = new System.Drawing.Point(405, 0);
 			this.Btn_Consultar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Consultar.Name = "Btn_Consultar";
-			this.Btn_Consultar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Consultar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Consultar.TabIndex = 5;
 			this.Btn_Consultar.Text = "Consultar";
 			this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -274,7 +278,7 @@
 			this.Btn_Eliminar.Location = new System.Drawing.Point(324, 0);
 			this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Eliminar.Name = "Btn_Eliminar";
-			this.Btn_Eliminar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Eliminar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Eliminar.TabIndex = 4;
 			this.Btn_Eliminar.Text = "Eliminar";
 			this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -293,7 +297,7 @@
 			this.Btn_Cancelar.Location = new System.Drawing.Point(243, 0);
 			this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Cancelar.Name = "Btn_Cancelar";
-			this.Btn_Cancelar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Cancelar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Cancelar.TabIndex = 3;
 			this.Btn_Cancelar.Text = "Cancelar";
 			this.Btn_Cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -313,7 +317,7 @@
 			this.Btn_Guardar.Location = new System.Drawing.Point(162, 0);
 			this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Guardar.Name = "Btn_Guardar";
-			this.Btn_Guardar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Guardar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Guardar.TabIndex = 2;
 			this.Btn_Guardar.Text = "Guardar";
 			this.Btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -332,7 +336,7 @@
 			this.Btn_Modificar.Location = new System.Drawing.Point(81, 0);
 			this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Modificar.Name = "Btn_Modificar";
-			this.Btn_Modificar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Modificar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Modificar.TabIndex = 1;
 			this.Btn_Modificar.Text = "Modificar";
 			this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -351,7 +355,7 @@
 			this.Btn_Ingresar.Location = new System.Drawing.Point(0, 0);
 			this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Ingresar.Name = "Btn_Ingresar";
-			this.Btn_Ingresar.Size = new System.Drawing.Size(81, 92);
+			this.Btn_Ingresar.Size = new System.Drawing.Size(81, 87);
 			this.Btn_Ingresar.TabIndex = 0;
 			this.Btn_Ingresar.Text = "Ingresar";
 			this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -370,7 +374,7 @@
 			this.tableLayoutPanel3.RowCount = 2;
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
 			this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel3.Size = new System.Drawing.Size(81, 92);
+			this.tableLayoutPanel3.Size = new System.Drawing.Size(81, 87);
 			this.tableLayoutPanel3.TabIndex = 14;
 			// 
 			// label1
@@ -379,10 +383,10 @@
 			this.label1.BackColor = System.Drawing.Color.White;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(0, 69);
+			this.label1.Location = new System.Drawing.Point(0, 65);
 			this.label1.Margin = new System.Windows.Forms.Padding(0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(81, 23);
+			this.label1.Size = new System.Drawing.Size(81, 22);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Ayuda";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -399,8 +403,8 @@
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
 			this.tableLayoutPanel4.RowCount = 1;
 			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
-			this.tableLayoutPanel4.Size = new System.Drawing.Size(81, 69);
+			this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+			this.tableLayoutPanel4.Size = new System.Drawing.Size(81, 65);
 			this.tableLayoutPanel4.TabIndex = 1;
 			// 
 			// Btn_Ayuda
@@ -415,7 +419,7 @@
 			this.Btn_Ayuda.Location = new System.Drawing.Point(40, 0);
 			this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_Ayuda.Name = "Btn_Ayuda";
-			this.Btn_Ayuda.Size = new System.Drawing.Size(41, 69);
+			this.Btn_Ayuda.Size = new System.Drawing.Size(41, 65);
 			this.Btn_Ayuda.TabIndex = 1;
 			this.Btn_Ayuda.Text = "?";
 			this.Btn_Ayuda.UseVisualStyleBackColor = false;
@@ -433,7 +437,7 @@
 			this.Btn_MasAyuda.Location = new System.Drawing.Point(0, 0);
 			this.Btn_MasAyuda.Margin = new System.Windows.Forms.Padding(0);
 			this.Btn_MasAyuda.Name = "Btn_MasAyuda";
-			this.Btn_MasAyuda.Size = new System.Drawing.Size(40, 69);
+			this.Btn_MasAyuda.Size = new System.Drawing.Size(40, 65);
 			this.Btn_MasAyuda.TabIndex = 0;
 			this.Btn_MasAyuda.Text = "+";
 			this.Btn_MasAyuda.UseVisualStyleBackColor = false;
@@ -443,21 +447,41 @@
 			// 
 			this.colorDialog1.Color = System.Drawing.Color.White;
 			// 
+			// dataGridView2
+			// 
+			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.Location = new System.Drawing.Point(894, 116);
+			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+			this.dataGridView2.TabIndex = 9;
+			// 
+			// dataGridView3
+			// 
+			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView3.Location = new System.Drawing.Point(468, 169);
+			this.dataGridView3.Name = "dataGridView3";
+			this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+			this.dataGridView3.TabIndex = 10;
+			// 
 			// Navegador
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
+			this.Controls.Add(this.dataGridView3);
+			this.Controls.Add(this.dataGridView2);
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "Navegador";
-			this.Size = new System.Drawing.Size(1148, 98);
+			this.Size = new System.Drawing.Size(1148, 92);
 			this.Load += new System.EventHandler(this.Navegador_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
 			this.tableLayoutPanel4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -475,7 +499,7 @@
         private System.Windows.Forms.Button Btn_Consultar;
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Cancelar;
-        private System.Windows.Forms.Button Btn_Guardar;
+        public System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Modificar;
         private System.Windows.Forms.Button Btn_Ingresar;
         private System.Windows.Forms.ColorDialog colorDialog1;
@@ -485,5 +509,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_MasAyuda;
-    }
+		private System.Windows.Forms.DataGridView dataGridView2;
+		private System.Windows.Forms.DataGridView dataGridView3;
+	}
 }
