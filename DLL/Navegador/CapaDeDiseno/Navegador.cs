@@ -84,28 +84,42 @@ namespace CapaDeDiseno
 
 					if (EstadoOK == "" && correcto == 0 && EstadoOK2 == "")
 					{
-						string[] camposEnc =logic.campos(enca);
+						string[] camposEnc = logic.campos(enca);
 						string[] tiposEnc = logic.tipos(enca);
 						string idCampo = "";
-					
+
 						DataTable dt = logic.consultaLogica(enca);
 						dataGridView1.DataSource = dt;
-						if (dataGridView1.CurrentRow.Cells[0].Value.ToString() != "" && dataGridView1.CurrentRow.Cells[0].Value.ToString() != null)
+						if (logic.TestRegistros(enca) > 0 && logic.TestRegistros(deta) > 0)
 						{
-							if (tiposEnc[0] != "int")
+							if (dataGridView1.CurrentRow.Cells[0].Value.ToString() != "" && dataGridView1.CurrentRow.Cells[0].Value.ToString() != null)
 							{
-								idCampo += "'" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "'";
+								if (tiposEnc[0] != "int")
+								{
+									idCampo += "'" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "'";
+								}
+								else
+								{
+									idCampo = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+								}
 							}
 							else
 							{
-								idCampo = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+								if (tiposEnc[0] != "int")
+								{
+									idCampo += "'0'";
+								}
+								else
+								{
+									idCampo = "0";
+								}
 							}
 						}
 						else
 						{
 							if (tiposEnc[0] != "int")
 							{
-								idCampo += "'0'";
+								idCampo += "'" + "0" + "'";
 							}
 							else
 							{
@@ -919,7 +933,6 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(',');
             query += campos + ");";
             sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", enca);
-			MessageBox.Show(combo.ToString());
             return query;
         }
 
@@ -1000,7 +1013,6 @@ namespace CapaDeDiseno
 			query += campos + ");";
 			sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", deta);
 			combo = combo - comboDet;
-			MessageBox.Show(combo.ToString());
 			return query;
 		}
 
@@ -1224,7 +1236,7 @@ namespace CapaDeDiseno
                     actualizardatagriew();
                     Btn_Modificar.Enabled = true;
                     Btn_Guardar.Enabled = false;
-                    Btn_Cancelar.Enabled = true;
+                    Btn_Cancelar.Enabled = false;
                     Btn_Eliminar.Enabled = true;
                     Btn_Ingresar.Enabled = true;
                     presionado = false;

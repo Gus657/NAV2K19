@@ -49,23 +49,23 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.textBox5 = new System.Windows.Forms.TextBox();
+			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.comboBox3 = new System.Windows.Forms.ComboBox();
+			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.comboBox3 = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-			this.textBox5 = new System.Windows.Forms.TextBox();
 			this.button6 = new System.Windows.Forms.Button();
 			this.navegador1 = new CapaDeDiseno.Navegador();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -106,6 +106,8 @@
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dataGridView1.Size = new System.Drawing.Size(586, 143);
 			this.dataGridView1.TabIndex = 5;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
 			this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellEnter);
 			// 
 			// dataGridView2
@@ -256,6 +258,36 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "ENCABEZADO RESERVA";
 			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(517, 92);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(58, 20);
+			this.textBox2.TabIndex = 40;
+			// 
+			// dateTimePicker1
+			// 
+			this.dateTimePicker1.Location = new System.Drawing.Point(356, 39);
+			this.dateTimePicker1.Name = "dateTimePicker1";
+			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePicker1.TabIndex = 39;
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Location = new System.Drawing.Point(376, 92);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(121, 21);
+			this.comboBox2.TabIndex = 38;
+			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Location = new System.Drawing.Point(189, 96);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(121, 21);
+			this.comboBox1.TabIndex = 37;
+			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.textBox5);
@@ -276,6 +308,51 @@
 			this.groupBox2.TabIndex = 41;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "DETALLES";
+			// 
+			// textBox5
+			// 
+			this.textBox5.Location = new System.Drawing.Point(418, 26);
+			this.textBox5.Name = "textBox5";
+			this.textBox5.Size = new System.Drawing.Size(62, 20);
+			this.textBox5.TabIndex = 51;
+			// 
+			// dateTimePicker3
+			// 
+			this.dateTimePicker3.Location = new System.Drawing.Point(280, 95);
+			this.dateTimePicker3.Name = "dateTimePicker3";
+			this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePicker3.TabIndex = 50;
+			// 
+			// dateTimePicker2
+			// 
+			this.dateTimePicker2.Location = new System.Drawing.Point(280, 67);
+			this.dateTimePicker2.Name = "dateTimePicker2";
+			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+			this.dateTimePicker2.TabIndex = 49;
+			// 
+			// comboBox3
+			// 
+			this.comboBox3.FormattingEnabled = true;
+			this.comboBox3.Location = new System.Drawing.Point(19, 89);
+			this.comboBox3.Name = "comboBox3";
+			this.comboBox3.Size = new System.Drawing.Size(121, 21);
+			this.comboBox3.TabIndex = 48;
+			// 
+			// textBox4
+			// 
+			this.textBox4.Enabled = false;
+			this.textBox4.Location = new System.Drawing.Point(87, 38);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.Size = new System.Drawing.Size(100, 20);
+			this.textBox4.TabIndex = 47;
+			// 
+			// textBox3
+			// 
+			this.textBox3.Enabled = false;
+			this.textBox3.Location = new System.Drawing.Point(19, 39);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(51, 20);
+			this.textBox3.TabIndex = 46;
 			// 
 			// label12
 			// 
@@ -331,81 +408,6 @@
 			this.label2.TabIndex = 37;
 			this.label2.Text = "Linea";
 			// 
-			// comboBox1
-			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(189, 96);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 21);
-			this.comboBox1.TabIndex = 37;
-			// 
-			// comboBox2
-			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(376, 92);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(121, 21);
-			this.comboBox2.TabIndex = 38;
-			// 
-			// dateTimePicker1
-			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(356, 39);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker1.TabIndex = 39;
-			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(517, 92);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(58, 20);
-			this.textBox2.TabIndex = 40;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Enabled = false;
-			this.textBox3.Location = new System.Drawing.Point(19, 39);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(51, 20);
-			this.textBox3.TabIndex = 46;
-			// 
-			// textBox4
-			// 
-			this.textBox4.Enabled = false;
-			this.textBox4.Location = new System.Drawing.Point(87, 38);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(100, 20);
-			this.textBox4.TabIndex = 47;
-			// 
-			// comboBox3
-			// 
-			this.comboBox3.FormattingEnabled = true;
-			this.comboBox3.Location = new System.Drawing.Point(19, 89);
-			this.comboBox3.Name = "comboBox3";
-			this.comboBox3.Size = new System.Drawing.Size(121, 21);
-			this.comboBox3.TabIndex = 48;
-			// 
-			// dateTimePicker2
-			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(280, 67);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 49;
-			// 
-			// dateTimePicker3
-			// 
-			this.dateTimePicker3.Location = new System.Drawing.Point(280, 95);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker3.TabIndex = 50;
-			// 
-			// textBox5
-			// 
-			this.textBox5.Location = new System.Drawing.Point(418, 26);
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(62, 20);
-			this.textBox5.TabIndex = 51;
-			// 
 			// button6
 			// 
 			this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,7 +422,7 @@
 			// navegador1
 			// 
 			this.navegador1.BackColor = System.Drawing.Color.White;
-			this.navegador1.Location = new System.Drawing.Point(18, 12);
+			this.navegador1.Location = new System.Drawing.Point(12, 12);
 			this.navegador1.Name = "navegador1";
 			this.navegador1.Size = new System.Drawing.Size(1148, 99);
 			this.navegador1.TabIndex = 0;

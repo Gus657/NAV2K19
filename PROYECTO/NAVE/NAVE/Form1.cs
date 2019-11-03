@@ -15,6 +15,7 @@ namespace NAVE
     {
         ToolTip ayuda_tp = new ToolTip();
 		int linea = 1;
+		List<Control> campos = new List<Control>();
 		public Form1()
 		{
 			InitializeComponent();
@@ -37,7 +38,7 @@ namespace NAVE
 			navegador1.asignarComboConTabla(comboBox1,"tbl_clientes", "nombres_cliente", 1);
 			navegador1.asignarComboConTabla(comboBox2, "tbl_empleado", "nombres", 1);
 			ayuda_tp.IsBalloon = true;
-			List<Control> campos = new List<Control>();
+		
 			campos.Add(textBox1);
 			campos.Add(comboBox1);
 			campos.Add(comboBox2);
@@ -178,6 +179,30 @@ namespace NAVE
 			dataGridView3.Rows.Add(textBox3.Text, textBox4.Text, comboBox3.Text, dateTimePicker2.Text, dateTimePicker3.Text, textBox5.Text);
 			linea++;
 			textBox3.Text = linea.ToString();
+		}
+
+		private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			int i = 0;
+			foreach (Control componente in campos)
+			{
+
+				componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+				i++;
+
+			}
+		}
+
+		private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			int i = 0;
+			foreach (Control componente in campos )
+			{
+
+				componente.Text = dataGridView1.CurrentRow.Cells[i].Value.ToString();
+				i++;
+
+			}
 		}
 	}
 }
