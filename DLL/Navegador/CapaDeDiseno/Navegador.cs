@@ -464,6 +464,10 @@ namespace CapaDeDiseno
 		{
 			dataGridView2 = dtb;
 		}
+		public void ObtenerDataGidView3(DataGridView dtb)
+		{
+			dataGridView3 = dtb;
+		}
 
 		public void ObtenerCamposMantenimiento(List<Control> controles)
 		{
@@ -475,7 +479,38 @@ namespace CapaDeDiseno
 			camposNav2 = controles;
 
 		}
+		private void insertTabla()
+		{
+			int i = 0;
+			foreach (DataGridViewRow row in dataGridView3.Rows)
+			{
+				foreach (Control componente in camposNav2)
+				{
 
+					componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+					i++;
+
+				}
+				i = 0;
+				logic.nuevoQuery(crearInsert2());
+				
+					dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+				
+			}
+			i = 0;
+			foreach (Control componente in camposNav2)
+			{
+
+				componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+				i++;
+
+			}
+			
+			logic.nuevoQuery(crearInsert2());
+
+			dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+
+		}
 		public void ObtenerIdAplicacion(string idAplicacion)
 		{
 			this.idAplicacion = idAplicacion;
@@ -878,20 +913,17 @@ namespace CapaDeDiseno
 		string crearInsert2()// crea el query de insert
 		{
 			string query = "INSERT INTO " + deta + " VALUES (";
-
+			int comboDet = 0;
 			int posCampo = 0;
 		
 			string campos = "";
 			foreach (Control componente in camposNav2)
 			{
-
-				MessageBox.Show(componente.Text);
 				switch (tipoCampo2[posCampo])
 				{
 					case "Text":
 						if (componente is ComboBox)
 						{
-							MessageBox.Show("combo  y Soy text");
 							if (modoCampoCombo[combo] == 1)
 							{
 								campos += "'" + logic.llaveCampolo(tablaCombo[combo], campoCombo[combo], componente.Text) + "' , ";
@@ -902,10 +934,10 @@ namespace CapaDeDiseno
 							}
 
 							combo++;
+							comboDet++;
 						}
 						else
 						{
-							MessageBox.Show("Soy text");
 							campos += "'" + componente.Text + "' , ";
 						}
 
@@ -913,7 +945,7 @@ namespace CapaDeDiseno
 					case "Num":
 						if (componente is ComboBox)
 						{
-							MessageBox.Show("combo  y Soy num");
+
 							if (modoCampoCombo[combo] == 1)
 							{
 								campos += logic.llaveCampolo(tablaCombo[combo], campoCombo[combo], componente.Text) + " , ";
@@ -924,10 +956,11 @@ namespace CapaDeDiseno
 							}
 
 							combo++;
+							comboDet++;
 						}
 						else
 						{
-							MessageBox.Show("Soy num");
+							
 							campos += componente.Text + " , ";
 						}
 						break;
@@ -953,7 +986,7 @@ namespace CapaDeDiseno
 			campos = campos.TrimEnd(',');
 			query += campos + ");";
 			sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", deta);
-			MessageBox.Show(query);
+			combo = combo - comboDet;
 			return query;
 		}
 
@@ -1458,8 +1491,16 @@ namespace CapaDeDiseno
                         logic.nuevoQuery(crearUpdate());
                         break;
                     case 2:
-                        logic.nuevoQuery(crearInsert());
-						logic.nuevoQuery(crearInsert2());
+						if (dataGridView3.Rows.Count > 1)
+						{
+							logic.nuevoQuery(crearInsert());
+							insertTabla();
+						}
+						else
+						{
+							MessageBox.Show("Debe Ingresar almenos 1 Detalle");
+						}
+						
 						Btn_Anterior.Enabled = true;
                         Btn_Siguiente.Enabled = true;
                         Btn_FlechaInicio.Enabled = true;

@@ -62,12 +62,12 @@
 			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -124,6 +124,7 @@
 			// 
 			// textBox13
 			// 
+			this.textBox13.Enabled = false;
 			this.textBox13.Location = new System.Drawing.Point(103, 39);
 			this.textBox13.Name = "textBox13";
 			this.textBox13.Size = new System.Drawing.Size(74, 20);
@@ -131,6 +132,7 @@
 			// 
 			// textBox14
 			// 
+			this.textBox14.Enabled = false;
 			this.textBox14.Location = new System.Drawing.Point(23, 39);
 			this.textBox14.Name = "textBox14";
 			this.textBox14.Size = new System.Drawing.Size(57, 20);
@@ -370,41 +372,14 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "DETALLES";
 			// 
-			// label2
+			// label12
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(27, 23);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(33, 13);
-			this.label2.TabIndex = 37;
-			this.label2.Text = "Linea";
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(100, 22);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(87, 13);
-			this.label8.TabIndex = 41;
-			this.label8.Text = "Numero Reserva";
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(63, 73);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(58, 13);
-			this.label9.TabIndex = 42;
-			this.label9.Text = "Habitacion";
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(229, 68);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(45, 13);
-			this.label10.TabIndex = 43;
-			this.label10.Text = "Llegada";
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(371, 26);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(40, 13);
+			this.label12.TabIndex = 45;
+			this.label12.Text = "Estado";
 			// 
 			// label11
 			// 
@@ -415,14 +390,41 @@
 			this.label11.TabIndex = 44;
 			this.label11.Text = "Salida";
 			// 
-			// label12
+			// label10
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(371, 26);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(40, 13);
-			this.label12.TabIndex = 45;
-			this.label12.Text = "Estado";
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(229, 68);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(45, 13);
+			this.label10.TabIndex = 43;
+			this.label10.Text = "Llegada";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(63, 73);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(58, 13);
+			this.label9.TabIndex = 42;
+			this.label9.Text = "Habitacion";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(100, 22);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(87, 13);
+			this.label8.TabIndex = 41;
+			this.label8.Text = "Numero Reserva";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(27, 23);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(33, 13);
+			this.label2.TabIndex = 37;
+			this.label2.Text = "Linea";
 			// 
 			// Form1
 			// 
