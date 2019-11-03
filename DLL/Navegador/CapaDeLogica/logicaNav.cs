@@ -35,19 +35,25 @@ namespace CapaDeLogica
             dt.Fill(table);
             return table;
         }
+		public DataTable consultaLogica2(string tabla, string campo, string id)  //obtener datos de la consulta
+		{
+			OdbcDataAdapter dt = sn.llenaTbl2(tabla, campo, id);
+			DataTable table = new DataTable();
+			dt.Fill(table);
+			return table;
+		}
 
+		/*eli*/
+		/* public DataTable consultaLogica2()  //obtener datos de la consulta
+		 {
+			 OdbcDataAdapter dt = sn.llenaTbl2();
+			 DataTable table = new DataTable();
+			 dt.Fill(table);
+			 return table;
+		 }*/
 
-        /*eli*/
-       /* public DataTable consultaLogica2()  //obtener datos de la consulta
-        {
-            OdbcDataAdapter dt = sn.llenaTbl2();
-            DataTable table = new DataTable();
-            dt.Fill(table);
-            return table;
-        }*/
-
-        /**/
-        public string MIndice(string Indice1)
+		/**/
+		public string MIndice(string Indice1)
         {
             string indice = sn.modIndice(Indice1);
 
@@ -117,7 +123,26 @@ namespace CapaDeLogica
 
             return Items;
         }
-        public void nuevoQuery(String query)//trasporta el query de la capa de disenio a Datos
+
+		public string llaveCampolo(string tabla, string campo, string valor)
+		{
+			string llave = sn.llaveCampo(tabla, campo, valor);
+			return llave;
+		}
+
+		public string llaveCampoRev(string tabla, string campo, string valor)
+		{
+			string llave = sn.llaveCampoReverso(tabla, campo, valor);
+			return llave;
+		}
+
+		public string ObtenerIdModulo(string aplicacion)
+		{
+			string llave = sn.IdModulo(aplicacion);
+			return llave;
+		}
+
+		public void nuevoQuery(String query)//trasporta el query de la capa de disenio a Datos
         {
             sn.ejecutarQuery(query);
         }

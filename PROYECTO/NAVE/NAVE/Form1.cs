@@ -19,36 +19,40 @@ namespace NAVE
 			InitializeComponent();
 			dateTimePicker1.Format = DateTimePickerFormat.Custom;
 			dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-			string[] alias = { "Cod", "Sucursal", "Venta", "Fecha", "Nombre", "nit", "Dirección", "Estado" };
+			dateTimePicker2.Format = DateTimePickerFormat.Custom;
+			dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+			dateTimePicker3.Format = DateTimePickerFormat.Custom;
+			dateTimePicker3.CustomFormat = "yyyy-MM-dd";
+			string[] alias = { "Cod", "Cliente", "Empleado", "Fecha", "Estado" };
 			navegador1.asignarAlias(alias);
 			navegador1.asignarSalida(this);
 			navegador1.asignarAyuda("1");
-			navegador1.asignarTabla("encabezado");
+			navegador1.asignarTabla("tbl_reservaciones");
+			navegador1.asignarComboConTabla(comboBox1,"tbl_clientes", "nombres_cliente", 1);
+			navegador1.asignarComboConTabla(comboBox2, "tbl_empleado", "nombres", 1);
 			ayuda_tp.IsBalloon = true;
 			List<Control> campos = new List<Control>();
 			campos.Add(textBox1);
-			campos.Add(textBox2);
-			campos.Add(textBox3);
+			campos.Add(comboBox1);
+			campos.Add(comboBox2);
 			campos.Add(dateTimePicker1);
-			campos.Add(textBox6);
-			campos.Add(textBox4);
-			campos.Add(textBox9);
 			campos.Add(textBox8);
 			navegador1.ObtenerCamposMantenimiento(campos);
 			navegador1.ObtenerDataGidView(dataGridView1);
 			/////////////////////DETALLE/////////////////////////
-			string[] alias2 = { "Linea", "Encabezado", "Producto", "Precio", "Cantidad", "Estado" };
+			string[] alias2 = { "Linea", "Reservacion", "Habitacion", "LLegada", "Salida", "Estado" };
 			navegador1.asignarAlias2(alias2);
 			navegador1.asignarSalida(this);
 			navegador1.asignarAyuda("1");
-			navegador1.asignarTabla2("detalle");
+			navegador1.asignarTabla2("tbl_detalle_reservacion");
+			navegador1.asignarComboConTabla(comboBox3, "tbl_habitaciones", "KidNumeroHabitacion", 0);
 			ayuda_tp.IsBalloon = true;
 			List<Control> campos2 = new List<Control>();
 			campos2.Add(textBox14);
 			campos2.Add(textBox13);
-			campos2.Add(textBox12);
-			campos2.Add(textBox11);
-			campos2.Add(textBox10);
+			campos2.Add(comboBox3);
+			campos2.Add(dateTimePicker2);
+			campos2.Add(dateTimePicker3);
 			campos2.Add(textBox5);
 			navegador1.ObtenerCamposMantenimiento2(campos2);
 			navegador1.ObtenerDataGidView2(dataGridView2);
@@ -124,7 +128,7 @@ namespace NAVE
 
 		private void Button6_Click(object sender, EventArgs e)
 		{
-			dataGridView3.Rows.Add(textBox14.Text, textBox13.Text, textBox12.Text, textBox11.Text, textBox10.Text, textBox5.Text);
+			dataGridView3.Rows.Add(textBox14.Text, textBox13.Text, comboBox3.Text, dateTimePicker2.Text, dateTimePicker3.Text, textBox5.Text);
 		}
 
 		private void Button5_Click(object sender, EventArgs e)
@@ -139,6 +143,16 @@ namespace NAVE
 		private void Timer1_Tick(object sender, EventArgs e)
 		{
 			textBox13.Text = textBox1.Text;
+
+		}
+
+		private void DataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+		{
+			navegador1.cambioIndice();
+		}
+
+		private void Label2_Click(object sender, EventArgs e)
+		{
 
 		}
 	}

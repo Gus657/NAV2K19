@@ -20,16 +20,22 @@ namespace CapaDeDiseno
 		List<Control> camposNav2 = new List<Control>();
 		Form cerrar;
 		int correcto = 0;
+		int combo = 0;
 		string enca = "def";
 		string deta = "def";
 		int activar = 0;    //Variable para reconocer que funcion realizara el boton de guardar (1. Ingresar, 2. Modificar, 3. Eliminar)
 		string[] aliasC = new string[40];
+		int[] modoCampoCombo = new int[40];
 		string[] aliasC2 = new string[40];
 		string[] tipoCampo = new string[30];//
 		string[] tipoCampo2 = new string[30];//
 		string[] NomCampo = new string[40];
 		string[] NomCampo2 = new string[40];
+		string[] campoCombo = new string[30];
+		string[] listaItems = new string[30];
+		string[] tablaCombo = new string[30];
 		int estado = 1;
+		int noCombo = 0;
 		bool presionado = false;
 		sentencia sn = new sentencia(); //objeto del componente de seguridad para obtener el método de la bitácora
 		string idUsuario = "";
@@ -78,9 +84,35 @@ namespace CapaDeDiseno
 
 					if (EstadoOK == "" && correcto == 0 && EstadoOK2 == "")
 					{
+						string[] camposEnc =logic.campos(enca);
+						string[] tiposEnc = logic.tipos(enca);
+						string idCampo = "";
+					
 						DataTable dt = logic.consultaLogica(enca);
 						dataGridView1.DataSource = dt;
-						DataTable dt2 = logic.consultaLogica(deta);
+						if (dataGridView1.CurrentRow.Cells[0].Value.ToString() != "" && dataGridView1.CurrentRow.Cells[0].Value.ToString() != null)
+						{
+							if (tiposEnc[0] != "int")
+							{
+								idCampo += "'" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "'";
+							}
+							else
+							{
+								idCampo = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+							}
+						}
+						else
+						{
+							if (tiposEnc[0] != "int")
+							{
+								idCampo += "'0'";
+							}
+							else
+							{
+								idCampo = "0";
+							}
+						}
+						DataTable dt2 = logic.consultaLogica2(deta, camposEnc[0],idCampo);
 						dataGridView2.DataSource = dt2;
 						Asayuda = logic.verificacion("");
 						if (Asayuda == "0")
@@ -123,13 +155,6 @@ namespace CapaDeDiseno
 										
 									}
 									i = 0;
-									foreach (Control componente in camposNav2)
-									{
-
-										componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-										i++;
-
-									}
 								}
 								else
 								{
@@ -303,11 +328,134 @@ namespace CapaDeDiseno
 
 			}
 		}
+		public void cambioIndice()
+		{
+
+			string[] camposEnc = logic.campos(enca);
+			string[] tiposEnc = logic.tipos(enca);
+			string idCampo = "";
+			if (dataGridView1.CurrentRow.Cells[0].Value.ToString() != "" && dataGridView1.CurrentRow.Cells[0].Value.ToString() != null)
+			{
+				if (tiposEnc[0] != "int")
+				{
+					idCampo += "'" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "'";
+				}
+				else
+				{
+					idCampo = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+				}
+			}
+			else
+			{
+				if (tiposEnc[0] != "int")
+				{
+					idCampo += "'0'";
+				}
+				else
+				{
+					idCampo = "0";
+				}
+			}
+			
+			DataTable dt2 = logic.consultaLogica2(deta, camposEnc[0], idCampo);
+			dataGridView2.DataSource = dt2;
+		}
+
+
 		public void ObtenerIdUsuario(string idUsuario)
 		{
 			this.idUsuario = idUsuario;
 		}
+		public void llenarCombo(string idUsuario)
+		{
+			this.idUsuario = idUsuario;
+		}
+		public void asignarComboConTabla(ComboBox combo, string tabla, string campo, int modo)
+		{
+			string[] items;
+			string TablaOK = logic.TestTabla(tabla);
+			if (TablaOK == "")
+			{
 
+				modoCampoCombo[noCombo]=modo;
+				tablaCombo[noCombo] = tabla;
+				campoCombo[noCombo] = campo;
+					items = logic.items(tabla, campo);
+				
+				
+					for (int i = 0; i < items.Length; i++)
+					{
+						if (items[i] != null)
+						{
+							if (items[i] != "")
+							{
+								combo.Items.Add(items[i]);
+							}
+						}
+
+					}
+				
+				noCombo++;
+			}
+			else
+			{
+				DialogResult validacion = MessageBox.Show(TablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
+				if (validacion == DialogResult.OK)
+				{
+					correcto = 1;
+				}
+			}
+
+
+		}
+		void limpiarLista(string cadena)
+		{
+			limpiarListaItems();
+			int contadorCadena = 0;
+			int contadorArray = 0;
+			string palabra = "";
+			while (contadorCadena < cadena.Length)
+			{
+				if (cadena[contadorCadena] != '|')
+				{
+					palabra += cadena[contadorCadena];
+					contadorCadena++;
+				}
+				else
+				{
+
+					listaItems[contadorArray] = palabra;
+					palabra = "";
+					contadorArray++;
+					contadorCadena++;
+				}
+			}
+		}
+		void limpiarListaItems()
+		{
+			for (int i = 0; i < listaItems.Length; i++)
+			{
+				listaItems[i] = "";
+			}
+		}
+
+
+		public void asignarComboConLista(ComboBox combo, string lista)
+		{
+			
+			limpiarLista(lista);
+			for (int i = 0; i < listaItems.Length; i++)
+			{
+				if (listaItems[i] != null)
+				{
+					if (listaItems[i] != "")
+					{
+						combo.Items.Add(listaItems[i]);
+					}
+				}
+
+			}
+		}
 		public void ObtenerDataGidView(DataGridView dtb)
 		{
 			dataGridView1 = dtb;
@@ -662,11 +810,46 @@ namespace CapaDeDiseno
                     switch (tipoCampo[posCampo])
                     {
                         case "Text":
-                            campos += "'" + componente.Text + "' , ";
-                            break;
+						if (componente is ComboBox)
+						{
+
+							if (modoCampoCombo[combo] == 1)
+							{
+								campos += "'" + logic.llaveCampolo(tablaCombo[combo], campoCombo[combo], componente.Text) + "' , ";
+							}
+							else
+							{
+								campos += "'" + componente.Text + "' , ";
+							}
+
+							combo++;
+						}
+						else
+						{
+							campos += "'" + componente.Text + "' , ";
+						}
+
+						break;
                         case "Num":
-                            campos += componente.Text + " , ";
-                            break;
+						if (componente is ComboBox)
+						{
+
+							if (modoCampoCombo[combo] == 1)
+							{
+								campos += logic.llaveCampolo(tablaCombo[combo], campoCombo[	combo], componente.Text) + " , ";
+							}
+							else
+							{
+								campos += componente.Text + " , ";
+							}
+
+							combo++;
+						}
+						else
+						{
+							campos += componente.Text + " , ";
+						}
+						break;
                     }
                     posCampo++;
 
@@ -697,27 +880,80 @@ namespace CapaDeDiseno
 			string query = "INSERT INTO " + deta + " VALUES (";
 
 			int posCampo = 0;
+		
 			string campos = "";
 			foreach (Control componente in camposNav2)
 			{
 
-
+				MessageBox.Show(componente.Text);
 				switch (tipoCampo2[posCampo])
 				{
 					case "Text":
-						campos += "'" + componente.Text + "' , ";
+						if (componente is ComboBox)
+						{
+							MessageBox.Show("combo  y Soy text");
+							if (modoCampoCombo[combo] == 1)
+							{
+								campos += "'" + logic.llaveCampolo(tablaCombo[combo], campoCombo[combo], componente.Text) + "' , ";
+							}
+							else
+							{
+								campos += "'" + componente.Text + "' , ";
+							}
+
+							combo++;
+						}
+						else
+						{
+							MessageBox.Show("Soy text");
+							campos += "'" + componente.Text + "' , ";
+						}
+
 						break;
 					case "Num":
-						campos += componente.Text + " , ";
+						if (componente is ComboBox)
+						{
+							MessageBox.Show("combo  y Soy num");
+							if (modoCampoCombo[combo] == 1)
+							{
+								campos += logic.llaveCampolo(tablaCombo[combo], campoCombo[combo], componente.Text) + " , ";
+							}
+							else
+							{
+								campos += componente.Text + " , ";
+							}
+
+							combo++;
+						}
+						else
+						{
+							MessageBox.Show("Soy num");
+							campos += componente.Text + " , ";
+						}
 						break;
 				}
 				posCampo++;
+
+
+				if (componente is Button)
+				{
+					switch (tipoCampo[posCampo])
+					{
+						case "Num":
+							campos += "'" + estado + "' , ";
+							// campos += "' 0 ' , ";
+							break;
+
+					}
+					posCampo++;
+				}
 
 			}
 			campos = campos.TrimEnd(' ');
 			campos = campos.TrimEnd(',');
 			query += campos + ");";
 			sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", deta);
+			MessageBox.Show(query);
 			return query;
 		}
 
@@ -812,16 +1048,18 @@ namespace CapaDeDiseno
             string[] Extras = logic.extras(enca);
             bool tipoInt = false;
             bool ExtraAI = false;
-            if (Tipos[0] == "int")
+			string auxId = "" ;
+			int auxLastId = 0;
+			if (Tipos[0] == "int")
             {
                 tipoInt = true;
-            }
-            if (Extras[0] == "auto_increment")
-            {
-                ExtraAI = true;
-            }
-            string auxId = (logic.lastID(enca));
-            int auxLastId = Int32.Parse(auxId);
+				if (Extras[0] == "auto_increment")
+				{
+					ExtraAI = true;
+					auxId = (logic.lastID(enca));
+					auxLastId = Int32.Parse(auxId);
+				}
+			}
 
             activar = 2;
             habilitarcampos_y_botones();        
@@ -1512,5 +1750,35 @@ namespace CapaDeDiseno
         {
 
         }
-    }
+
+		private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void DataGridView1_CurrentCellChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void DataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void DataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void DataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void DataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+	}
 }

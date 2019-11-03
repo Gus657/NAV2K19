@@ -473,7 +473,7 @@
 			this.Controls.Add(this.tableLayoutPanel2);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "Navegador";
-			this.Size = new System.Drawing.Size(1148, 92);
+			this.Size = new System.Drawing.Size(1140, 513);
 			this.Load += new System.EventHandler(this.Navegador_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.tableLayoutPanel2.ResumeLayout(false);

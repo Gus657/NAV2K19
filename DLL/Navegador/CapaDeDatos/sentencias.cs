@@ -20,8 +20,16 @@ namespace CapaDeDatos
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
             return dataTable;
         }
-        //obtener ID siguiente => Randy             
-        public string obtenerId(string tabla)
+		public OdbcDataAdapter llenaTbl2(string tabla,string campo, string id)// metodo  que obtinene el contenio de una tabla
+		{
+
+			string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
+			string sql = "SELECT * FROM " + tabla + " WHERE "+campo +"= "+ id+"  ORDER BY " + camposDesc[0] + " DESC ;";
+			OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, cn.probarConexion());
+			return dataTable;
+		}
+		//obtener ID siguiente => Randy             
+		public string obtenerId(string tabla)
         {
             string[] camposDesc = obtenerCampos(tabla); //string para almacenar los campos de OBTENERCAMPOS y utilizar el 1ro
             string sql = "SELECT MAX(" + camposDesc[0] + ") FROM " + tabla + ";"; //SELECT MAX(idFuncion) FROM `funciones`            
@@ -347,8 +355,57 @@ namespace CapaDeDatos
 
             return nuevaCadena;// devuelve la cadena unicamente con el tipo
         }
+		public string llaveCampo(string tabla, string campo, string valor)
+		{
+			string llave = "";
+			try
+			{
+				OdbcCommand command = new OdbcCommand("SELECT * FROM " + tabla + " where " + campo + " = '" + valor + "' ;", cn.probarConexion());
+				OdbcDataReader reader = command.ExecuteReader();
+				reader.Read();
+				llave = reader.GetValue(0).ToString();
+			}
+			catch (Exception)
+			{
 
-        public void ejecutarQuery(string query)// ejecuta un query en la BD
+			}
+			return llave;
+		}
+		public string llaveCampoReverso(string tabla, string campo, string valor)
+		{
+			string llave = "";
+			string[] Campos = obtenerCampos(tabla);
+			try
+			{
+				OdbcCommand command = new OdbcCommand("SELECT " + campo + " FROM " + tabla + " where " + Campos[0] + " = " + valor + " ;", cn.probarConexion());
+				OdbcDataReader reader = command.ExecuteReader();
+				reader.Read();
+				llave = reader.GetValue(0).ToString();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Dio errore " + "SELECT " + campo + " FROM " + tabla + " where " + campo + " = " + valor + " ;" + ex.ToString());
+			}
+			return llave;
+		}
+
+		public string IdModulo(string aplicacion)
+		{
+			string llave = "";
+			try
+			{
+				OdbcCommand command = new OdbcCommand("SELECT * FROM tbl_aplicacion" + " where" + " PK_id_aplicacion= " + aplicacion + " ;", cn.probarConexion());
+				OdbcDataReader reader = command.ExecuteReader();
+				reader.Read();
+				llave = reader.GetValue(0).ToString();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Dio errore " + "SELECT * FROM tbl_aplicacion" + " where" + " PK_id_aplicacion= " + aplicacion + " ;" + ex.ToString());
+			}
+			return llave;
+		}
+		public void ejecutarQuery(string query)// ejecuta un query en la BD
         {
             try
             {

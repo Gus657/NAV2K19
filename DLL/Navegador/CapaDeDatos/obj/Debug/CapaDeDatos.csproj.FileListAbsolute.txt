@@ -81,3 +81,11 @@ C:\Users\gganp\Desktop\Nueva carpeta\NAV2K19\DLL\Navegador\CapaDeDatos\obj\Debug
 C:\Users\gganp\Desktop\Nueva carpeta\NAV2K19\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.CopyComplete
 C:\Users\gganp\Desktop\Nueva carpeta\NAV2K19\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.dll
 C:\Users\gganp\Desktop\Nueva carpeta\NAV2K19\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.pdb
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\bin\Debug\CapaDeDatos.dll
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\bin\Debug\CapaDeDatos.pdb
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\bin\Debug\CapaDeLogica.pdb
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.csprojAssemblyReference.cache
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.CoreCompileInputs.cache
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.CopyComplete
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.dll
+C:\Users\gganp\Desktop\NAV2.0\NAV2K19-2.0\DLL\Navegador\CapaDeDatos\obj\Debug\CapaDeDatos.pdb
