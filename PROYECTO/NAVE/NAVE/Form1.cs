@@ -19,7 +19,7 @@ namespace NAVE
 		{
 			InitializeComponent();
 			//////////// ESTANDAR DE COMPONENTES ///////////////////////////
-			textBox14.Text = linea.ToString();
+			textBox3.Text = linea.ToString();
 			dateTimePicker1.Format = DateTimePickerFormat.Custom;
 			dateTimePicker1.CustomFormat = "yyyy-MM-dd";
 			dateTimePicker2.Format = DateTimePickerFormat.Custom;
@@ -42,13 +42,13 @@ namespace NAVE
 			campos.Add(comboBox1);
 			campos.Add(comboBox2);
 			campos.Add(dateTimePicker1);
-			campos.Add(textBox8);
+			campos.Add(textBox2);
 			navegador1.ObtenerCamposMantenimiento(campos);
 			navegador1.ObtenerDataGidView(dataGridView1);
 
 
 
-			/////////////////////DETALLE/////////////////////////
+			///////////////////// DETALLE /////////////////////////
 			string[] alias2 = { "Linea", "Reservacion", "Habitacion", "LLegada", "Salida", "Estado" };
 			navegador1.asignarAlias2(alias2);
 			navegador1.asignarSalida(this);
@@ -57,8 +57,8 @@ namespace NAVE
 			navegador1.asignarComboConTabla(comboBox3, "tbl_habitaciones", "KidNumeroHabitacion", 0);
 			ayuda_tp.IsBalloon = true;
 			List<Control> campos2 = new List<Control>();
-			campos2.Add(textBox14);
-			campos2.Add(textBox13);
+			campos2.Add(textBox3);
+			campos2.Add(textBox4);
 			campos2.Add(comboBox3);
 			campos2.Add(dateTimePicker2);
 			campos2.Add(dateTimePicker3);
@@ -79,6 +79,7 @@ namespace NAVE
 		private void Btn_Guardar_Click(object sender, EventArgs e)
 		{
 			linea = 1;
+			textBox3.Text = linea.ToString();
 			//throw new NotImplementedException();
 		}
 
@@ -142,9 +143,9 @@ namespace NAVE
 		private void Button6_Click(object sender, EventArgs e)
 		{
 			
-			dataGridView3.Rows.Add(textBox14.Text, textBox13.Text, comboBox3.Text, dateTimePicker2.Text, dateTimePicker3.Text, textBox5.Text);
+			dataGridView3.Rows.Add(textBox3.Text, textBox4.Text, comboBox3.Text, dateTimePicker2.Text, dateTimePicker3.Text, textBox5.Text);
 			linea++;
-			textBox14.Text = linea.ToString();
+			textBox3.Text = linea.ToString();
 		}
 
 		private void Button5_Click(object sender, EventArgs e)
@@ -158,7 +159,7 @@ namespace NAVE
 
 		private void Timer1_Tick(object sender, EventArgs e)
 		{
-			textBox13.Text = textBox1.Text;
+			textBox4.Text = textBox1.Text;
 
 		}
 
@@ -170,6 +171,13 @@ namespace NAVE
 		private void Label2_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void Button6_Click_1(object sender, EventArgs e)
+		{
+			dataGridView3.Rows.Add(textBox3.Text, textBox4.Text, comboBox3.Text, dateTimePicker2.Text, dateTimePicker3.Text, textBox5.Text);
+			linea++;
+			textBox3.Text = linea.ToString();
 		}
 	}
 }

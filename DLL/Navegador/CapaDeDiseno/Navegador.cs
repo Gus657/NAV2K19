@@ -225,14 +225,6 @@ namespace CapaDeDiseno
 				dataGridView2.Rows[fila + 1].Selected = true;
 				dataGridView2.CurrentCell = dataGridView2.Rows[fila + 1].Cells[0];
 
-				foreach (Control componente in camposNav2)
-				{
-
-					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-					i++;
-
-
-				}
 
 			}
 		}
@@ -248,22 +240,14 @@ namespace CapaDeDiseno
 				dataGridView2.Rows[fila - 1].Selected = true;
 				dataGridView2.CurrentCell = dataGridView2.Rows[fila - 1].Cells[0];
 
-				foreach (Control componente in camposNav2)
-				{
-
-
-					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-					i++;
-
-
-				}
+				
 			}
 		}
 
 		public void fin()
 		{
 			dataGridView2.Rows[dataGridView2.Rows.Count - 2].Selected = true;
-			dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView1.Rows.Count - 2].Cells[0];
+			dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[0];
 
 			int i = 0;
 			string[] Campos = logic.campos(deta);
@@ -271,17 +255,8 @@ namespace CapaDeDiseno
 			int fila = dataGridView2.SelectedRows[0].Index;
 			if (fila < dataGridView2.Rows.Count - 1)
 			{
-				dataGridView2.Rows[dataGridView1.Rows.Count - 2].Selected = true;
+				dataGridView2.Rows[dataGridView2.Rows.Count - 2].Selected = true;
 				dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[0];
-
-				foreach (Control componente in camposNav2)
-				{
-
-					componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-					i++;
-				}
-
-
 
 			}
 		}
@@ -300,30 +275,6 @@ namespace CapaDeDiseno
 				dataGridView2.Rows[0].Selected = true;
 				dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
 
-
-				foreach (Control componente in camposNav2)
-				{
-					if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
-					{
-						componente.Text = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-						i++;
-					}
-					if (componente is Button)
-					{
-						string var1 = dataGridView2.CurrentRow.Cells[i].Value.ToString();
-						if (var1 == "0")
-						{
-							componente.Text = "Desactivado";
-							componente.BackColor = Color.Red;
-						}
-						if (var1 == "1")
-						{
-							componente.Text = "Activado";
-							componente.BackColor = Color.Green;
-						}
-					}
-
-				}
 
 
 			}
@@ -482,33 +433,93 @@ namespace CapaDeDiseno
 		private void insertTabla()
 		{
 			int i = 0;
-			foreach (DataGridViewRow row in dataGridView3.Rows)
+			if (dataGridView3.Rows.Count == 2)
 			{
 				foreach (Control componente in camposNav2)
 				{
-
+				if (dataGridView3.CurrentRow.Cells[0].Value!= null)
+					{
 					componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+					}
+					
 					i++;
 
 				}
 				i = 0;
-				logic.nuevoQuery(crearInsert2());
-				
+				if (dataGridView3.CurrentRow.Cells[0].Value != null)
+				{
+					logic.nuevoQuery(crearInsert2());
 					dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+				}
 				
+			}
+			else
+			{
+				
+					foreach (DataGridViewRow row in dataGridView3.Rows)
+					{
+						foreach (Control componente in camposNav2)
+						{
+						if (dataGridView3.CurrentRow.Cells[0].Value != null)
+						{
+							componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+						}
+						i++;
+
+						}
+						i = 0;
+					if (dataGridView3.CurrentRow.Cells[0].Value != null)
+					{
+						logic.nuevoQuery(crearInsert2());
+						dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+					}
+
+				
+					}
+					i = 0;
+					foreach (Control componente in camposNav2)
+					{
+
+					if (dataGridView3.CurrentRow.Cells[0].Value != null)
+					{
+						componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+					}
+					i++;
+
+					}
+				if (dataGridView3.CurrentRow.Cells[0].Value != null)
+				{
+					logic.nuevoQuery(crearInsert2());
+					dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+				}
+
 			}
 			i = 0;
-			foreach (Control componente in camposNav2)
+			if (dataGridView3.CurrentRow.Cells[0].Value != null)
 			{
+				foreach (DataGridViewRow row in dataGridView3.Rows)
+				{
+					foreach (Control componente in camposNav2)
+					{
+						if (dataGridView3.CurrentRow.Cells[0].Value != null)
+						{
+							componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
+						}
+						i++;
 
-				componente.Text = dataGridView3.CurrentRow.Cells[i].Value.ToString();
-				i++;
-
+					}
+					i = 0;
+					if (dataGridView3.CurrentRow.Cells[0].Value != null)
+					{
+						logic.nuevoQuery(crearInsert2());
+						dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+					}
+				}
 			}
-			
-			logic.nuevoQuery(crearInsert2());
 
-			dataGridView3.Rows.RemoveAt(dataGridView3.CurrentCell.RowIndex);
+
+
+
 
 		}
 		public void ObtenerIdAplicacion(string idAplicacion)
@@ -834,6 +845,7 @@ namespace CapaDeDiseno
 		}
 		string crearInsert()// crea el query de insert
         {
+			combo = 0;
             string query = "INSERT INTO " + enca + " VALUES (";
 
             int posCampo = 0;
@@ -907,6 +919,7 @@ namespace CapaDeDiseno
             campos = campos.TrimEnd(',');
             query += campos + ");";
             sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", enca);
+			MessageBox.Show(combo.ToString());
             return query;
         }
 
@@ -987,6 +1000,7 @@ namespace CapaDeDiseno
 			query += campos + ");";
 			sn.insertarBitacora(idUsuario, "Se creó un nuevo registro", deta);
 			combo = combo - comboDet;
+			MessageBox.Show(combo.ToString());
 			return query;
 		}
 
@@ -1473,7 +1487,8 @@ namespace CapaDeDiseno
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
             bool lleno =true;
-            foreach (Control componente in camposNav)
+			dataGridView3.CurrentCell = dataGridView3.Rows[0].Cells[0];
+			foreach (Control componente in camposNav)
             {
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                 {
