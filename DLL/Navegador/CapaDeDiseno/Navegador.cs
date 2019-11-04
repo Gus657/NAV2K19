@@ -331,10 +331,6 @@ namespace CapaDeDiseno
 		{
 			this.idUsuario = idUsuario;
 		}
-		public void llenarCombo(string idUsuario)
-		{
-			this.idUsuario = idUsuario;
-		}
 		public void asignarComboConTabla(ComboBox combo, string tabla, string campo, int modo)
 		{
 			string[] items;
@@ -420,6 +416,8 @@ namespace CapaDeDiseno
 				}
 
 			}
+			modoCampoCombo[noCombo] = 0;
+			noCombo++;
 		}
 		public void ObtenerDataGidView(DataGridView dtb)
 		{

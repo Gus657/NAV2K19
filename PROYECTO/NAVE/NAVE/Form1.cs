@@ -55,7 +55,8 @@ namespace NAVE
 			navegador1.asignarSalida(this);
 			navegador1.asignarAyuda("1");
 			navegador1.asignarTabla2("tbl_detalle_reservacion");
-			navegador1.asignarComboConTabla(comboBox3, "tbl_habitaciones", "KidNumeroHabitacion", 0);
+			navegador1.asignarComboConLista(comboBox3,"101|102|103|");
+			//navegador1.asignarComboConTabla(comboBox3, "tbl_habitaciones", "KidNumeroHabitacion", 0);
 			ayuda_tp.IsBalloon = true;
 			List<Control> campos2 = new List<Control>();
 			campos2.Add(textBox3);
